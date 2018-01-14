@@ -24,7 +24,7 @@ used_keys = [
 
 keys_object = []
 
-max_range = 1000
+max_range = 1
 
 with open('clean_tweet.txt') as f:
     content = f.readlines()
@@ -35,6 +35,7 @@ for i in range(0, max_range):
 	new_content.append(json.loads(content[i]))
 
 big_container = []
+big_container.append(used_keys)
 for content in new_content:
 	container = []
 	for ky in used_keys:
@@ -46,12 +47,15 @@ for content in new_content:
 					container.append(content[ky])
 			else:
 				container.append('object')
+				print (ky)
+				for key in content[ky].keys():
+					print ('-- ' + key)
 		except Exception as e:
-			print('-')
+			container.append('-')
 	big_container.append(container)
 
   
-with open('test.csv', 'w') as myFile:  
+with open(str(max_range) + '.csv', 'w') as myFile:  
 	writer = csv.writer(myFile)
 	writer.writerows(big_container)
 		
