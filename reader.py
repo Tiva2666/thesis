@@ -2,13 +2,12 @@ import json
 from pprint import pprint
 import csv
 
-with open('test.json') as f:
+with open('clean_tweet.txt') as f:
     content = f.readlines()
 
 new_content = []
 for line in content:
-	if (len(line) > 2): 
-		new_content.append(json.loads(line))
+	new_content.append(json.loads(line))
 
 #test if the file is already cleaned up: 
 #for line in new_content:
